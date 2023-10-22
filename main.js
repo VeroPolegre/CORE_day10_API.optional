@@ -12,8 +12,8 @@ const movieRating = document.getElementById("movie-rating");
 const searchMovie = (movieName) => {
   axios
     .get(`${api}/search/movie?api_key=${apiKey}&query=${movieName}`)
-    .then((response) => {
-      const movieData = response.data.results[0];
+    .then((res) => {
+      const movieData = res.data.results[0];
 
       movieTitle.innerHTML = movieData.title;
       movieDescription.innerHTML = movieData.overview;
@@ -34,8 +34,8 @@ const searchMovie = (movieName) => {
 const getGenre = (genreIds) => {
   axios
     .get(`${api}/genre/movie/list?api_key=${apiKey}`)
-    .then((response) => {
-      const genres = response.data.genres;
+    .then((res) => {
+      const genres = res.data.genres;
 
       const movieGenres = genres.filter((genre) => genreIds.includes(genre.id));
 
